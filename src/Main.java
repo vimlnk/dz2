@@ -9,20 +9,20 @@ class Animals {
 
     void run(int distance) {
         if (distance < maxRun) {
-            System.out.println("Тварина пробігла "+ distance);
+            System.out.println(getClass().getSimpleName()+" пробігла "+ distance);
         } else {
-            System.out.println("Тварина не може пробігти "+ distance);
+            System.out.println(getClass().getSimpleName()+" не може пробігти "+ distance);
 
         }
 
     }
     void swim(int distance) {
         if (distance < maxSwim) {
-            System.out.println("Тварина проплила " + distance);
+            System.out.println(getClass().getSimpleName()+" проплила " + distance);
         } else if (distance > maxSwim) {
-            System.out.println("Тварина не вміє плавати");
-        }else {
-            System.out.println("Тварина не може проплисти "+ distance);
+            System.out.println(getClass().getSimpleName()+" не може проплисти "+ distance);
+        }else if (distance == 0) {
+            System.out.println(getClass().getSimpleName()+" не вміє плавати");
         }
     }
 }
@@ -31,11 +31,20 @@ class Cat extends Animals {
     super(201,0);
 }
 }
+class Dog extends Animals {
+    public Dog() {
+        super(501,11);
+    }
+}
  public class Main {
      public static void main(String[] args) {
          Cat cat = new Cat();
+         Dog dog = new Dog();
          cat.run(200);
          cat.run(300);
+         cat.swim(0);
+         dog.run(200);
+         dog.swim(18);
          cat.swim(200);
      }
  }
